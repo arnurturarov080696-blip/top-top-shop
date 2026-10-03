@@ -1,0 +1,1304 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Топ-Топ — детская одежда, обувь и игрушки</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --sky:#BEE4F5;
+  --salad:#D3EFAE;
+  --yellow:#FFEAB0;
+  --mint:#D3EFAE;
+  --pink:#F6D9E4;
+  --lilac:#E3D9F2;
+  --peach:#FBE2CB;
+  --ink:#1F2A4A;
+  --ink-soft:#4B5676;
+  --bg:#FAFCFF;
+  --card:#FFFFFF;
+  --line:#E4ECF5;
+  --danger:#D8465A;
+  --danger-bg:#FDE8EA;
+  --success:#2F9E6E;
+  --radius-lg:28px;
+  --radius-md:20px;
+  --radius-sm:14px;
+  --shadow:0 10px 30px rgba(31,42,74,0.08);
+  font-size:16px;
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+body{
+  font-family:'Nunito',system-ui,-apple-system,Segoe UI,Arial,sans-serif;
+  color:var(--ink);
+  background:var(--bg);
+  min-height:100vh;
+  padding-bottom:76px;
+  overflow-x:hidden;
+}
+h1,h2,h3,h4{font-family:'Fredoka',system-ui,sans-serif;margin:0 0 .4em;font-weight:600;line-height:1.2;}
+p{margin:0 0 .6em;color:var(--ink-soft);}
+button{font-family:inherit;}
+a{color:inherit;}
+img,svg{max-width:100%;display:block;}
+.container{max-width:1080px;margin:0 auto;padding:0 16px;}
+
+@media (prefers-reduced-motion: reduce){
+  *{animation-duration:0.001ms !important;animation-iteration-count:1 !important;transition-duration:0.001ms !important;scroll-behavior:auto !important;}
+}
+
+:focus-visible{outline:3px solid #2F6FEE;outline-offset:2px;border-radius:8px;}
+
+/* ---------- Top bar ---------- */
+.topbar{
+  position:sticky;top:0;z-index:40;
+  background:rgba(250,252,255,0.92);
+  backdrop-filter:blur(6px);
+  border-bottom:1px solid var(--line);
+}
+.topbar-inner{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;max-width:1080px;margin:0 auto;gap:12px;}
+.logo{display:flex;align-items:center;gap:8px;font-family:'Fredoka';font-size:22px;font-weight:700;color:var(--ink);text-decoration:none;white-space:nowrap;background:none;border:none;cursor:pointer;padding:4px;}
+.logo .foot{font-size:24px;}
+.topnav{display:none;gap:4px;}
+.topnav button{
+  background:none;border:none;padding:10px 14px;border-radius:999px;font-weight:700;color:var(--ink-soft);cursor:pointer;font-size:15px;
+}
+.topnav button.active{background:var(--sky);color:var(--ink);}
+.topnav button:hover{background:var(--line);}
+.cart-btn{
+  display:flex;align-items:center;gap:8px;background:linear-gradient(135deg,var(--sky),var(--salad));border:none;border-radius:999px;
+  padding:10px 16px;font-weight:800;cursor:pointer;color:var(--ink);min-height:44px;flex-shrink:0;
+}
+.cart-btn .emoji{font-size:18px;}
+.cart-count{background:var(--ink);color:#fff;border-radius:999px;font-size:12px;padding:1px 7px;min-width:20px;text-align:center;}
+
+@media (min-width:760px){
+  .topnav{display:flex;}
+  body{padding-bottom:40px;}
+  .bottomnav{display:none !important;}
+}
+
+/* ---------- Bottom nav (mobile) ---------- */
+.bottomnav{
+  position:fixed;bottom:0;left:0;right:0;z-index:40;
+  display:flex;justify-content:space-around;
+  background:#fff;border-top:1px solid var(--line);
+  padding:6px 4px calc(6px + env(safe-area-inset-bottom));
+}
+.bottomnav button{
+  background:none;border:none;display:flex;flex-direction:column;align-items:center;gap:2px;
+  color:var(--ink-soft);font-size:11px;font-weight:700;padding:6px 10px;border-radius:12px;min-width:60px;cursor:pointer;min-height:44px;
+}
+.bottomnav button.active{color:var(--ink);background:var(--mint);}
+.bottomnav .ic{font-size:20px;}
+
+/* ---------- Buttons ---------- */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  min-height:44px;padding:11px 22px;border-radius:999px;border:none;
+  font-weight:800;font-size:15px;cursor:pointer;text-decoration:none;
+  transition:transform .12s ease, box-shadow .12s ease;
+}
+.btn:active{transform:scale(.97);}
+.btn-primary{background:var(--ink);color:#fff;}
+.btn-primary:hover{box-shadow:var(--shadow);}
+.btn-accent{background:var(--salad);color:var(--ink);}
+.btn-accent:hover{box-shadow:var(--shadow);}
+.btn-outline{background:#fff;color:var(--ink);border:2px solid var(--line);}
+.btn-outline:hover{border-color:var(--ink);}
+.btn-ghost{background:transparent;color:var(--ink-soft);}
+.btn-block{width:100%;}
+.btn-sm{min-height:36px;padding:6px 14px;font-size:13px;}
+.btn[disabled]{opacity:.5;cursor:not-allowed;}
+
+/* ---------- Sections / views ---------- */
+.view{display:none;}
+.view.active{display:block;}
+section{padding:36px 0;}
+.section-title{text-align:center;max-width:620px;margin:0 auto 24px;}
+.section-title h2{font-size:26px;}
+
+/* ---------- Hero ---------- */
+.hero{
+  background:linear-gradient(160deg, var(--sky) 0%, var(--mint) 100%);
+  border-radius:0 0 var(--radius-lg) var(--radius-lg);
+  padding:40px 0 48px;
+  text-align:center;
+}
+.hero h1{font-size:30px;max-width:520px;margin:0 auto 12px;}
+.hero p{color:var(--ink);opacity:.85;max-width:420px;margin:0 auto 20px;font-weight:600;}
+@media (min-width:600px){.hero h1{font-size:38px;}}
+
+/* ---------- Age picker ---------- */
+.age-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;max-width:520px;margin:0 auto;}
+@media (min-width:600px){.age-grid{grid-template-columns:repeat(4,1fr);}}
+.age-card{
+  background:#fff;border:2px solid var(--line);border-radius:var(--radius-md);
+  padding:18px 10px;text-align:center;cursor:pointer;min-height:44px;
+}
+.age-card:hover{border-color:var(--ink);}
+.age-card .emoji{font-size:28px;display:block;margin-bottom:6px;}
+.age-card .range{font-family:'Fredoka';font-weight:700;font-size:17px;}
+.age-card .height{font-size:12px;color:var(--ink-soft);}
+
+/* ---------- Perks ---------- */
+.perks{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
+@media (min-width:700px){.perks{grid-template-columns:repeat(4,1fr);}}
+.perk{background:var(--card);border-radius:var(--radius-md);padding:18px 14px;text-align:center;box-shadow:var(--shadow);}
+.perk .emoji{font-size:26px;margin-bottom:8px;}
+.perk .label{font-weight:800;font-size:14px;}
+
+/* ---------- Quick categories ---------- */
+.cat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+@media (min-width:700px){.cat-grid{grid-template-columns:repeat(6,1fr);}}
+.cat-card{
+  border:none;background:var(--card);border-radius:var(--radius-md);padding:16px 8px;text-align:center;cursor:pointer;
+  box-shadow:var(--shadow);min-height:44px;
+}
+.cat-card .emoji{font-size:26px;display:block;margin-bottom:6px;}
+.cat-card .label{font-weight:700;font-size:13px;}
+.cat-card:hover{transform:translateY(-2px);}
+
+/* ---------- Product grid & cards ---------- */
+.product-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
+@media (min-width:600px){.product-grid{grid-template-columns:repeat(3,1fr);}}
+@media (min-width:900px){.product-grid{grid-template-columns:repeat(4,1fr);}}
+.product-card{
+  background:var(--card);border-radius:var(--radius-md);overflow:hidden;box-shadow:var(--shadow);
+  cursor:pointer;display:flex;flex-direction:column;text-align:left;border:none;padding:0;min-height:44px;
+}
+.product-card:hover{transform:translateY(-2px);}
+.product-img{
+  aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;font-size:48px;position:relative;
+}
+.product-badge{
+  position:absolute;top:8px;left:8px;background:var(--pink);color:var(--ink);font-weight:800;font-size:11px;
+  padding:3px 9px;border-radius:999px;
+}
+.product-body{padding:10px 12px 14px;}
+.product-age{font-size:11px;color:var(--ink-soft);font-weight:700;text-transform:uppercase;letter-spacing:.03em;}
+.product-name{font-weight:800;font-size:14px;margin:2px 0 6px;color:var(--ink);}
+.product-price{display:flex;align-items:baseline;gap:6px;}
+.price-now{font-weight:800;font-size:16px;}
+.price-old{font-size:12px;color:var(--ink-soft);text-decoration:line-through;}
+
+/* ---------- Catalog controls ---------- */
+.catalog-controls{
+  position:sticky;top:64px;z-index:20;background:var(--bg);padding:12px 0;margin-bottom:8px;
+}
+@media (min-width:760px){.catalog-controls{top:66px;}}
+.search-row{display:flex;gap:8px;margin-bottom:10px;}
+.search-input{
+  flex:1;border:2px solid var(--line);border-radius:999px;padding:10px 16px;font-size:15px;min-height:44px;font-family:inherit;
+}
+.search-input:focus{border-color:var(--ink);}
+.cat-tabs{display:flex;gap:8px;overflow-x:auto;padding-bottom:6px;-webkit-overflow-scrolling:touch;scrollbar-width:none;}
+.cat-tabs::-webkit-scrollbar{display:none;}
+.cat-tab{
+  flex-shrink:0;background:#fff;border:2px solid var(--line);border-radius:999px;padding:8px 16px;font-weight:700;font-size:13px;
+  cursor:pointer;color:var(--ink-soft);min-height:40px;white-space:nowrap;
+}
+.cat-tab.active{background:var(--ink);color:#fff;border-color:var(--ink);}
+.filter-row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:8px;}
+.filter-row select{
+  border:2px solid var(--line);border-radius:999px;padding:8px 14px;font-size:13px;font-weight:700;color:var(--ink);
+  background:#fff;min-height:40px;font-family:inherit;
+}
+.result-count{font-size:13px;color:var(--ink-soft);font-weight:700;margin:4px 0 14px;}
+.empty-state{text-align:center;padding:48px 16px;color:var(--ink-soft);}
+.empty-state .emoji{font-size:40px;margin-bottom:10px;}
+
+/* ---------- Steps ---------- */
+.steps{display:grid;grid-template-columns:1fr;gap:14px;max-width:700px;margin:0 auto;}
+@media (min-width:700px){.steps{grid-template-columns:repeat(3,1fr);}}
+.step{background:#fff;border-radius:var(--radius-md);padding:20px;text-align:center;box-shadow:var(--shadow);}
+.step .num{
+  width:36px;height:36px;border-radius:50%;background:var(--lilac);display:flex;align-items:center;justify-content:center;
+  font-weight:800;margin:0 auto 10px;font-family:'Fredoka';
+}
+
+/* ---------- Promo banner ---------- */
+.promo-banner{
+  background:linear-gradient(135deg,var(--sky),var(--salad));border-radius:var(--radius-lg);
+  padding:30px 24px;text-align:center;
+}
+.promo-banner h3{font-size:22px;}
+
+/* ---------- Register / Contacts forms ---------- */
+.form-card{
+  background:#fff;border-radius:var(--radius-lg);padding:24px;box-shadow:var(--shadow);max-width:520px;margin:0 auto;
+}
+.field{margin-bottom:16px;}
+.field label{display:block;font-weight:800;font-size:13px;margin-bottom:6px;}
+.field input,.field select,.field textarea{
+  width:100%;border:2px solid var(--line);border-radius:var(--radius-sm);padding:11px 14px;font-size:15px;font-family:inherit;min-height:44px;
+}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--ink);}
+.field textarea{min-height:90px;resize:vertical;}
+.field.has-error input,.field.has-error select,.field.has-error textarea{border-color:var(--danger);background:var(--danger-bg);}
+.error-msg{color:var(--danger);font-size:12px;font-weight:700;margin-top:4px;display:none;}
+.field.has-error .error-msg{display:block;}
+.check-row{display:flex;gap:10px;align-items:flex-start;margin-bottom:16px;}
+.check-row input{width:20px;height:20px;flex-shrink:0;margin-top:2px;}
+.check-row label{font-size:13px;color:var(--ink-soft);font-weight:600;}
+.success-box{text-align:center;padding:10px;}
+.success-box .emoji{font-size:44px;margin-bottom:10px;}
+
+/* ---------- Contacts ---------- */
+.contact-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;max-width:620px;margin:0 auto 28px;}
+@media (min-width:600px){.contact-grid{grid-template-columns:repeat(4,1fr);}}
+.contact-chip{
+  background:#fff;border-radius:var(--radius-md);padding:16px 10px;text-align:center;text-decoration:none;box-shadow:var(--shadow);
+  display:block;min-height:44px;
+}
+.contact-chip .emoji{font-size:26px;margin-bottom:6px;}
+.contact-chip .label{font-weight:800;font-size:13px;color:var(--ink);}
+.pickup-box{background:#fff;border-radius:var(--radius-md);padding:20px;max-width:620px;margin:0 auto 28px;box-shadow:var(--shadow);}
+.faq{max-width:620px;margin:0 auto 28px;}
+.faq-item{background:#fff;border-radius:var(--radius-md);margin-bottom:10px;box-shadow:var(--shadow);overflow:hidden;}
+.faq-q{
+  width:100%;text-align:left;background:none;border:none;padding:16px 18px;font-weight:800;font-size:14px;cursor:pointer;
+  display:flex;justify-content:space-between;align-items:center;min-height:44px;color:var(--ink);
+}
+.faq-a{padding:0 18px 16px;font-size:13px;color:var(--ink-soft);display:none;}
+.faq-item.open .faq-a{display:block;}
+.faq-item.open .chev{transform:rotate(180deg);}
+.chev{transition:transform .15s ease;}
+
+/* ---------- Overlays / Modals ---------- */
+.overlay{
+  position:fixed;inset:0;background:rgba(31,42,74,0.45);z-index:100;display:none;
+  align-items:flex-end;justify-content:center;
+}
+.overlay.active{display:flex;}
+@media (min-width:700px){.overlay{align-items:center;}}
+.sheet{
+  background:#fff;border-radius:24px 24px 0 0;width:100%;max-width:560px;max-height:92vh;overflow-y:auto;
+  padding:20px;position:relative;
+}
+@media (min-width:700px){.sheet{border-radius:var(--radius-lg);max-height:88vh;}}
+.sheet-close{
+  position:absolute;top:14px;right:14px;background:var(--line);border:none;border-radius:50%;width:36px;height:36px;
+  font-size:18px;cursor:pointer;z-index:2;color:var(--ink);line-height:1;
+}
+.sheet-header{font-size:20px;margin-bottom:16px;padding-right:40px;}
+
+/* product modal */
+.pm-img{aspect-ratio:1.3/1;border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center;font-size:72px;margin-bottom:16px;}
+.pm-price{display:flex;align-items:baseline;gap:10px;margin-bottom:10px;}
+.pm-price .price-now{font-size:22px;}
+.size-grid{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 6px;}
+.size-chip{
+  border:2px solid var(--line);background:#fff;border-radius:12px;padding:9px 14px;font-weight:700;cursor:pointer;min-height:40px;font-size:13px;
+}
+.size-chip.selected{border-color:var(--ink);background:var(--ink);color:#fff;}
+.size-hint{font-size:12px;color:var(--ink-soft);margin-bottom:10px;}
+.exchange-note{background:var(--mint);border-radius:var(--radius-sm);padding:10px 14px;font-size:12px;font-weight:700;margin:12px 0;}
+.size-warning{color:var(--danger);font-weight:700;font-size:13px;margin:6px 0;display:none;}
+.size-warning.show{display:block;}
+
+/* ---------- Cart ---------- */
+.cart-item{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--line);}
+.cart-item .thumb{width:60px;height:60px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:28px;flex-shrink:0;}
+.cart-item-info{flex:1;min-width:0;}
+.cart-item-name{font-weight:800;font-size:14px;}
+.cart-item-size{font-size:12px;color:var(--ink-soft);}
+.qty-row{display:flex;align-items:center;gap:10px;margin-top:6px;}
+.qty-btn{width:28px;height:28px;border-radius:50%;border:2px solid var(--line);background:#fff;font-weight:800;cursor:pointer;line-height:1;}
+.qty-val{font-weight:800;min-width:18px;text-align:center;}
+.cart-item-price{font-weight:800;font-size:14px;white-space:nowrap;}
+.free-ship-box{background:var(--mint);border-radius:var(--radius-sm);padding:12px 14px;margin:14px 0;}
+.progress-bar{height:8px;background:#fff;border-radius:999px;overflow:hidden;margin-top:8px;}
+.progress-fill{height:100%;background:var(--success);border-radius:999px;transition:width .2s ease;}
+.promo-row{display:flex;gap:8px;margin:14px 0;}
+.promo-row input{flex:1;border:2px solid var(--line);border-radius:999px;padding:9px 14px;font-size:14px;min-height:40px;font-family:inherit;}
+.promo-msg{font-size:12px;font-weight:700;margin-top:6px;}
+.promo-msg.err{color:var(--danger);}
+.promo-msg.ok{color:var(--success);}
+.delivery-option{
+  display:flex;align-items:center;gap:10px;border:2px solid var(--line);border-radius:var(--radius-sm);padding:12px 14px;margin-bottom:8px;cursor:pointer;
+}
+.delivery-option.selected{border-color:var(--ink);background:var(--bg);}
+.delivery-option input{width:18px;height:18px;flex-shrink:0;}
+.delivery-info{flex:1;}
+.delivery-name{font-weight:800;font-size:14px;}
+.delivery-days{font-size:12px;color:var(--ink-soft);}
+.delivery-price{font-weight:800;font-size:14px;white-space:nowrap;}
+.totals-row{display:flex;justify-content:space-between;font-size:14px;padding:4px 0;color:var(--ink-soft);font-weight:700;}
+.totals-row.grand{color:var(--ink);font-size:18px;border-top:1px solid var(--line);margin-top:8px;padding-top:12px;}
+.cart-footer{position:sticky;bottom:0;background:#fff;padding-top:12px;}
+
+/* order summary mini list in checkout */
+.mini-item{display:flex;justify-content:space-between;font-size:13px;padding:4px 0;color:var(--ink-soft);}
+
+/* Toast */
+.toast{
+  position:fixed;left:50%;bottom:90px;transform:translateX(-50%) translateY(10px);
+  background:var(--ink);color:#fff;padding:12px 20px;border-radius:999px;font-weight:700;font-size:14px;
+  z-index:200;opacity:0;pointer-events:none;transition:opacity .2s ease, transform .2s ease;
+}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+
+.footer-note{text-align:center;padding:20px 16px;font-size:12px;color:var(--ink-soft);}
+</style>
+</head>
+<body>
+
+<!-- ======================= НАСТРОЙКИ ======================= -->
+<!--
+  Блок настроек без разработчика (п.8 ПРД):
+  WA_NUMBER, FREE_FROM, PROMO, DELIVERY, P находятся в начале скрипта ниже.
+-->
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <button class="logo" data-nav="home"><span class="foot">👣</span> Топ-Топ</button>
+    <nav class="topnav" id="topnav">
+      <button data-nav="catalog">Каталог</button>
+      <button data-nav="home">Главная</button>
+      <button data-nav="register">Регистрация</button>
+      <button data-nav="contacts">Контакты</button>
+    </nav>
+    <button class="cart-btn" id="cartOpenBtn" aria-label="Открыть корзину">
+      <span class="emoji">🛒</span>
+      <span id="cartHeaderSum">0 ₸</span>
+      <span class="cart-count" id="cartCount">0</span>
+    </button>
+  </div>
+</header>
+
+<!-- ======================= ГЛАВНАЯ ======================= -->
+<main class="view active" id="view-home">
+  <section class="hero">
+    <div class="container">
+      <h1>Детская одежда, обувь и игрушки с доставкой по Казахстану</h1>
+      <p>Выбираем размер по росту, привозим за 1–8 дней, меняем за 14 дней без лишних вопросов.</p>
+      <button class="btn btn-primary" data-nav="catalog">Смотреть каталог</button>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="section-title"><h2>Сколько лет ребёнку?</h2><p>Покажем вещи, которые точно подойдут по росту.</p></div>
+      <div class="age-grid" id="ageGrid"></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="perks" id="perksGrid"></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="section-title"><h2>Быстрые категории</h2></div>
+      <div class="cat-grid" id="quickCatGrid"></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="section-title"><h2>Хиты этой недели</h2></div>
+      <div class="product-grid" id="hitsGrid"></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="section-title"><h2>Как купить за 3 шага</h2></div>
+      <div class="steps">
+        <div class="step"><div class="num">1</div><h4>Выберите вещи</h4><p>Добавьте товары нужного размера в корзину.</p></div>
+        <div class="step"><div class="num">2</div><h4>Укажите доставку</h4><p>Курьер, СДЭК, Казпочта или самовывоз.</p></div>
+        <div class="step"><div class="num">3</div><h4>Отправьте заказ</h4><p>Заявка уходит в WhatsApp, менеджер свяжется с вами.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="promo-banner">
+        <h3>−10% на первый заказ</h3>
+        <p>Зарегистрируйтесь — получите промокод WELCOME10.</p>
+        <button class="btn btn-primary" data-nav="register">Получить скидку</button>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ======================= КАТАЛОГ ======================= -->
+<main class="view" id="view-catalog">
+  <section style="padding-top:16px;">
+    <div class="container">
+      <div class="section-title" style="margin-bottom:10px;"><h2>Каталог</h2></div>
+      <div class="catalog-controls">
+        <div class="search-row">
+          <input type="text" class="search-input" id="searchInput" placeholder="Что ищем? Например, платье" aria-label="Поиск по названию">
+        </div>
+        <div class="cat-tabs" id="catTabs"></div>
+        <div class="filter-row">
+          <select id="ageFilter" aria-label="Фильтр по возрасту">
+            <option value="">Любой возраст</option>
+            <option value="0-2">0–2 года</option>
+            <option value="2-5">2–5 лет</option>
+            <option value="5-8">5–8 лет</option>
+            <option value="8-12">8–12 лет</option>
+          </select>
+          <select id="sortFilter" aria-label="Сортировка">
+            <option value="popular">Популярные</option>
+            <option value="cheap">Дешёвые</option>
+            <option value="expensive">Дорогие</option>
+          </select>
+        </div>
+      </div>
+      <div class="result-count" id="resultCount"></div>
+      <div class="product-grid" id="catalogGrid"></div>
+      <div class="empty-state" id="emptyState" style="display:none;">
+        <div class="emoji">🔍</div>
+        <p>Ничего не нашли. Попробуйте другой возраст или категорию.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ======================= РЕГИСТРАЦИЯ ======================= -->
+<main class="view" id="view-register">
+  <section>
+    <div class="container">
+      <div class="section-title"><h2>Регистрация</h2><p>Займёт меньше минуты. Пароль и код из SMS не нужны.</p></div>
+      <div class="form-card" id="registerFormWrap">
+        <form id="registerForm" novalidate>
+          <div class="field" id="f-reg-name">
+            <label for="regName">Имя*</label>
+            <input type="text" id="regName" autocomplete="name">
+            <div class="error-msg">Введите имя.</div>
+          </div>
+          <div class="field" id="f-reg-phone">
+            <label for="regPhone">Телефон*</label>
+            <input type="tel" id="regPhone" autocomplete="tel" placeholder="+7 701 123 45 67">
+            <div class="error-msg">Введите номер полностью (не менее 11 цифр).</div>
+          </div>
+          <div class="field" id="f-reg-email">
+            <label for="regEmail">Email</label>
+            <input type="email" id="regEmail" autocomplete="email" placeholder="почта@пример.kz">
+            <div class="error-msg">Проверьте формат почты.</div>
+          </div>
+          <div class="field">
+            <label for="regCity">Город</label>
+            <input type="text" id="regCity" autocomplete="address-level2" placeholder="Алматы">
+          </div>
+          <div class="field">
+            <label for="regAge">Возраст ребёнка</label>
+            <select id="regAge">
+              <option value="">Не указано</option>
+              <option value="0-2">0–2 года</option>
+              <option value="2-5">2–5 лет</option>
+              <option value="5-8">5–8 лет</option>
+              <option value="8-12">8–12 лет</option>
+            </select>
+          </div>
+          <div class="check-row" id="f-reg-agree">
+            <input type="checkbox" id="regAgree">
+            <label for="regAgree">Согласен(на) на обработку персональных данных*</label>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">Зарегистрироваться и получить WELCOME10</button>
+        </form>
+      </div>
+      <div class="form-card" id="registerSuccessWrap" style="display:none;">
+        <div class="success-box">
+          <div class="emoji">🎉</div>
+          <h3>Готово!</h3>
+          <p>Промокод <strong>WELCOME10</strong> уже применён в корзине.</p>
+          <button class="btn btn-accent" id="regShowItemsBtn" style="display:none;margin-bottom:10px;"></button>
+          <br>
+          <button class="btn btn-outline" data-nav="catalog">В каталог</button>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ======================= КОНТАКТЫ ======================= -->
+<main class="view" id="view-contacts">
+  <section>
+    <div class="container">
+      <div class="section-title"><h2>Контакты</h2><p>Ответим быстро — пишите или звоните.</p></div>
+      <div class="contact-grid" id="contactGrid"></div>
+      <div class="pickup-box">
+        <h4>Пункт самовывоза</h4>
+        <p id="pickupAddress"></p>
+        <p id="pickupHours"></p>
+      </div>
+      <div class="faq" id="faqList"></div>
+      <div class="form-card">
+        <h3 style="font-size:18px;">Напишите нам</h3>
+        <form id="contactForm" novalidate>
+          <div class="field" id="f-c-name">
+            <label for="cName">Имя</label>
+            <input type="text" id="cName">
+          </div>
+          <div class="field" id="f-c-message">
+            <label for="cMessage">Сообщение*</label>
+            <textarea id="cMessage" placeholder="Ваш вопрос..."></textarea>
+            <div class="error-msg">Напишите сообщение перед отправкой.</div>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">Отправить в WhatsApp</button>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ======================= Нижняя навигация (моб.) ======================= -->
+<nav class="bottomnav" id="bottomnav">
+  <button data-nav="catalog"><span class="ic">🧸</span>Каталог</button>
+  <button data-nav="home"><span class="ic">🏠</span>Главная</button>
+  <button data-nav="register"><span class="ic">📝</span>Регистрация</button>
+  <button data-nav="contacts"><span class="ic">💬</span>Контакты</button>
+</nav>
+
+<!-- ======================= ОВЕРЛЕИ ======================= -->
+
+<!-- Карточка товара -->
+<div class="overlay" id="productOverlay" role="dialog" aria-modal="true" aria-label="Карточка товара">
+  <div class="sheet" id="productSheet"></div>
+</div>
+
+<!-- Корзина -->
+<div class="overlay" id="cartOverlay" role="dialog" aria-modal="true" aria-label="Корзина">
+  <div class="sheet" id="cartSheet"></div>
+</div>
+
+<!-- Оформление заказа -->
+<div class="overlay" id="checkoutOverlay" role="dialog" aria-modal="true" aria-label="Оформление заказа">
+  <div class="sheet" id="checkoutSheet"></div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<p class="footer-note">Топ-Топ — прототип витрины. Данные хранятся только в этом браузере.</p>
+
+<script>
+(function(){
+"use strict";
+
+/* ======================= НАСТРОЙКИ МАГАЗИНА ======================= */
+const WA_NUMBER = "77077716717"; // номер WhatsApp без "+", заглушка
+const FREE_FROM = 15000;         // порог бесплатной доставки, тенге
+const PROMO = { "WELCOME10": 0.10 }; // промокоды: код -> скидка
+
+const DELIVERY = [
+  { id:"courier", name:"Курьер по городу", days:"1–2 дня", price:1500, addr:"Улица, дом, квартира" },
+  { id:"cdek",    name:"СДЭК по Казахстану", days:"2–6 дней", price:1800, addr:"Город и пункт выдачи" },
+  { id:"post",    name:"Казпочта", days:"4–8 дней", price:1000, addr:"Город и пункт выдачи" },
+  { id:"pickup",  name:"Самовывоз", days:"В день заказа", price:0, addr:null }
+];
+
+const AGE_LABELS = {
+  "0-2":{ label:"0–2 года", height:"56–86 см", emoji:"👶" },
+  "2-5":{ label:"2–5 лет",  height:"92–110 см", emoji:"🧒" },
+  "5-8":{ label:"5–8 лет",  height:"116–134 см", emoji:"🧑" },
+  "8-12":{ label:"8–12 лет", height:"140–158 см", emoji:"🧑‍🦱" }
+};
+const SIZES_BY_AGE = {
+  "0-2":[56,62,68,74,80,86],
+  "2-5":[92,98,104,110],
+  "5-8":[116,122,128,134],
+  "8-12":[140,146,152,158]
+};
+const CATS = [
+  { id:"all", label:"Всё", emoji:"✨" },
+  { id:"clothes", label:"Одежда", emoji:"👕" },
+  { id:"sport", label:"Спортивная одежда", emoji:"🏃" },
+  { id:"dress", label:"Платья", emoji:"👗" },
+  { id:"outer", label:"Верхняя", emoji:"🧥" },
+  { id:"shoes", label:"Обувь", emoji:"👟" },
+  { id:"toys", label:"Игрушки", emoji:"🧸" },
+  { id:"acc", label:"Аксессуары", emoji:"🎒" }
+];
+
+const P = [
+  { id:1, name:"Боди с принтом «Зверята»", cat:"clothes", age:"0-2", price:3500, oldPrice:null, sizes:[56,62,68], badge:"Новинка", hit:false, emoji:"👶", color:"var(--sky)" },
+  { id:2, name:"Комбинезон слитный флисовый", cat:"clothes", age:"0-2", price:6900, oldPrice:null, sizes:[62,68,74,80], badge:null, hit:false, emoji:"🧦", color:"var(--peach)" },
+  { id:3, name:"Футболка с динозавром", cat:"clothes", age:"5-8", price:3200, oldPrice:3900, badge:"−18%", sizes:[116,122,128,134], hit:false, emoji:"👕", color:"var(--mint)" },
+  { id:4, name:"Платье «Ромашка» с оборками", cat:"dress", age:"2-5", price:9900, oldPrice:12900, badge:"−23%", sizes:[92,98,104,110], hit:true, emoji:"👗", color:"var(--pink)" },
+  { id:5, name:"Платье нарядное праздничное", cat:"dress", age:"5-8", price:13500, oldPrice:null, sizes:[116,122,128,134], badge:"Хит", hit:true, emoji:"👗", color:"var(--lilac)" },
+  { id:6, name:"Куртка демисезонная «Облачко»", cat:"outer", age:"2-5", price:15900, oldPrice:null, sizes:[92,98,104,110], badge:"Хит", hit:true, emoji:"🧥", color:"var(--sky)" },
+  { id:7, name:"Куртка зимняя с капюшоном", cat:"outer", age:"5-8", price:21900, oldPrice:25900, badge:"−15%", sizes:[116,122,128,134], hit:false, emoji:"🧥", color:"var(--peach)" },
+  { id:8, name:"Пуховик лёгкий дутый", cat:"outer", age:"8-12", price:24900, oldPrice:null, sizes:[140,146,152,158], badge:"Новинка", hit:false, emoji:"🧥", color:"var(--mint)" },
+  { id:9, name:"Кроссовки лёгкие сетка", cat:"shoes", age:"2-5", price:8900, oldPrice:null, sizes:[24,25,26,27,28,29], badge:"Хит", hit:true, emoji:"👟", color:"var(--yellow)" },
+  { id:10, name:"Сандалии на липучках", cat:"shoes", age:"0-2", price:6500, oldPrice:null, sizes:[19,20,21,22], badge:null, hit:false, emoji:"🩴", color:"var(--pink)" },
+  { id:11, name:"Ботинки зимние на меху", cat:"shoes", age:"5-8", price:16900, oldPrice:19900, badge:"−15%", sizes:[30,31,32,33,34], hit:false, emoji:"🥾", color:"var(--sky)" },
+  { id:12, name:"Кеды классические", cat:"shoes", age:"8-12", price:9900, oldPrice:null, sizes:[33,34,35,36,37], badge:null, hit:false, emoji:"👟", color:"var(--lilac)" },
+  { id:13, name:"Мягкая игрушка «Мишка»", cat:"toys", age:"0-2", price:5900, oldPrice:null, sizes:["Один размер"], badge:"Хит", hit:true, emoji:"🧸", color:"var(--peach)" },
+  { id:14, name:"Конструктор «Город»", cat:"toys", age:"5-8", price:7900, oldPrice:null, sizes:["Один размер"], badge:null, hit:false, emoji:"🧱", color:"var(--mint)" },
+  { id:15, name:"Набор для творчества", cat:"toys", age:"2-5", price:4500, oldPrice:5500, badge:"−18%", sizes:["Один размер"], hit:false, emoji:"🎨", color:"var(--yellow)" },
+  { id:16, name:"Рюкзак школьный ортопедический", cat:"acc", age:"8-12", price:12900, oldPrice:null, sizes:["Один размер"], badge:"Новинка", hit:false, emoji:"🎒", color:"var(--sky)" },
+  { id:17, name:"Спортивный костюм «Чемпион»", cat:"sport", age:"2-5", price:8900, oldPrice:null, sizes:[92,98,104,110], badge:"Новинка", hit:false, emoji:"🤸", color:"var(--salad)" },
+  { id:18, name:"Футболка и шорты для спорта", cat:"sport", age:"5-8", price:5900, oldPrice:7200, badge:"−18%", sizes:[116,122,128,134], hit:false, emoji:"🎽", color:"var(--sky)" },
+  { id:19, name:"Спортивный костюм подростковый", cat:"sport", age:"8-12", price:11900, oldPrice:null, sizes:[140,146,152,158], badge:"Хит", hit:true, emoji:"🏃", color:"var(--salad)" }
+];
+
+const CONTACTS = {
+  whatsapp: WA_NUMBER,
+  phone: "+7 707 771 67 17",
+  instagram: "@top_top.kz",
+  email: "hello@toptop.kz",
+  pickupAddress: "г. Алматы, проспект Достык, 25",
+  pickupHours: "Ежедневно с 10:00 до 20:00"
+};
+
+const FAQ = [
+  { q:"Сколько идёт доставка?", a:"Курьер по городу — 1–2 дня, СДЭК — 2–6 дней, Казпочта — 4–8 дней, самовывоз — в день заказа." },
+  { q:"Как оформить обмен или возврат?", a:"Обмен возможен в течение 14 дней с момента получения, если вещь не носили и сохранён вид упаковки. Напишите в WhatsApp с номером заказа." },
+  { q:"Как выбрать размер?", a:"В карточке товара указаны размеры по росту ребёнка (для одежды) или размерная сетка (для обуви). Если не уверены — напишите нам, подскажем." },
+  { q:"Какие способы оплаты?", a:"Оплата через Kaspi или наличными при получении. Реквизиты для перевода пришлёт менеджер в WhatsApp после подтверждения заказа." }
+];
+
+/* ======================= СОСТОЯНИЕ ======================= */
+const LS_CART = "tt_cart";
+const LS_PROFILE = "tt_profile";
+const LS_PROMO = "tt_promo";
+const LS_DELIVERY = "tt_delivery";
+
+let cart = loadJSON(LS_CART, []);           // [{productId, size, qty}]
+let profile = loadJSON(LS_PROFILE, null);   // {name, phone, email, city, childAge}
+let appliedPromo = loadJSON(LS_PROMO, null); // "WELCOME10" | null
+let selectedDelivery = loadJSON(LS_DELIVERY, DELIVERY[0].id);
+
+let currentProduct = null;
+let currentSize = null;
+
+function loadJSON(key, fallback){
+  try{
+    const raw = localStorage.getItem(key);
+    if(raw === null) return fallback;
+    return JSON.parse(raw);
+  }catch(e){ return fallback; }
+}
+function saveJSON(key, value){
+  try{ localStorage.setItem(key, JSON.stringify(value)); }catch(e){}
+}
+function saveCart(){ saveJSON(LS_CART, cart); }
+function saveProfile(){ saveJSON(LS_PROFILE, profile); }
+function savePromo(){ saveJSON(LS_PROMO, appliedPromo); }
+function saveDelivery(){ saveJSON(LS_DELIVERY, selectedDelivery); }
+
+function money(n){ return Math.round(n).toLocaleString("ru-RU") + " ₸"; }
+function findProduct(id){ return P.find(p=>p.id===id); }
+function escapeHtml(s){ return String(s).replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+
+/* ======================= НАВИГАЦИЯ ======================= */
+const catalogFilter = { search:"", cat:"all", age:"", sort:"popular" };
+
+function showView(name){
+  document.querySelectorAll(".view").forEach(v=>v.classList.remove("active"));
+  document.getElementById("view-"+name).classList.add("active");
+  document.querySelectorAll(".topnav button, .bottomnav button").forEach(b=>{
+    b.classList.toggle("active", b.dataset.nav === name);
+  });
+  window.scrollTo({top:0, behavior:"auto"});
+  if(name === "catalog") renderCatalog();
+}
+
+document.querySelectorAll("[data-nav]").forEach(btn=>{
+  btn.addEventListener("click", ()=>showView(btn.dataset.nav));
+});
+
+/* ======================= ГЛАВНАЯ: рендер блоков ======================= */
+function renderHome(){
+  const ageGrid = document.getElementById("ageGrid");
+  ageGrid.innerHTML = Object.keys(AGE_LABELS).map(key=>{
+    const a = AGE_LABELS[key];
+    return `<button class="age-card" data-age="${key}">
+      <span class="emoji">${a.emoji}</span>
+      <span class="range">${a.label}</span>
+      <span class="height">рост ${a.height}</span>
+    </button>`;
+  }).join("");
+  ageGrid.querySelectorAll(".age-card").forEach(c=>{
+    c.addEventListener("click", ()=>{
+      catalogFilter.age = c.dataset.age;
+      catalogFilter.cat = "all";
+      showView("catalog");
+    });
+  });
+
+  const perks = [
+    { emoji:"🚚", label:`Бесплатная доставка от ${money(FREE_FROM)}` },
+    { emoji:"🔄", label:"Обмен 14 дней" },
+    { emoji:"🌿", label:"Безопасные ткани" },
+    { emoji:"💳", label:"Kaspi и рассрочка" }
+  ];
+  document.getElementById("perksGrid").innerHTML = perks.map(p=>
+    `<div class="perk"><div class="emoji">${p.emoji}</div><div class="label">${p.label}</div></div>`
+  ).join("");
+
+  const quickCats = CATS.filter(c=>c.id!=="all");
+  document.getElementById("quickCatGrid").innerHTML = quickCats.map(c=>
+    `<button class="cat-card" data-cat="${c.id}"><span class="emoji">${c.emoji}</span><span class="label">${c.label}</span></button>`
+  ).join("");
+  document.getElementById("quickCatGrid").querySelectorAll(".cat-card").forEach(c=>{
+    c.addEventListener("click", ()=>{
+      catalogFilter.cat = c.dataset.cat;
+      catalogFilter.age = "";
+      showView("catalog");
+    });
+  });
+
+  const hits = P.filter(p=>p.hit).slice(0,4);
+  document.getElementById("hitsGrid").innerHTML = hits.map(productCardHtml).join("");
+  bindProductCards(document.getElementById("hitsGrid"));
+}
+
+function productCardHtml(p){
+  return `<button class="product-card" data-id="${p.id}">
+    <div class="product-img" style="background:${p.color}">
+      ${p.badge ? `<span class="product-badge">${p.badge}</span>` : ""}
+      <span>${p.emoji}</span>
+    </div>
+    <div class="product-body">
+      <div class="product-age">${AGE_LABELS[p.age].label}</div>
+      <div class="product-name">${escapeHtml(p.name)}</div>
+      <div class="product-price">
+        <span class="price-now">${money(p.price)}</span>
+        ${p.oldPrice ? `<span class="price-old">${money(p.oldPrice)}</span>` : ""}
+      </div>
+    </div>
+  </button>`;
+}
+function bindProductCards(container){
+  container.querySelectorAll(".product-card").forEach(c=>{
+    c.addEventListener("click", ()=>openProductModal(Number(c.dataset.id)));
+  });
+}
+
+/* ======================= КАТАЛОГ ======================= */
+function renderCatTabs(){
+  const wrap = document.getElementById("catTabs");
+  wrap.innerHTML = CATS.map(c=>
+    `<button class="cat-tab${catalogFilter.cat===c.id?" active":""}" data-cat="${c.id}">${c.emoji} ${c.label}</button>`
+  ).join("");
+  wrap.querySelectorAll(".cat-tab").forEach(btn=>{
+    btn.addEventListener("click", ()=>{
+      catalogFilter.cat = btn.dataset.cat;
+      renderCatalog();
+    });
+  });
+}
+
+function renderCatalog(){
+  document.getElementById("searchInput").value = catalogFilter.search;
+  document.getElementById("ageFilter").value = catalogFilter.age;
+  document.getElementById("sortFilter").value = catalogFilter.sort;
+  renderCatTabs();
+
+  let list = P.slice();
+  if(catalogFilter.cat !== "all") list = list.filter(p=>p.cat===catalogFilter.cat);
+  if(catalogFilter.age) list = list.filter(p=>p.age===catalogFilter.age);
+  if(catalogFilter.search.trim()){
+    const q = catalogFilter.search.trim().toLowerCase();
+    list = list.filter(p=>p.name.toLowerCase().includes(q));
+  }
+  if(catalogFilter.sort === "cheap") list.sort((a,b)=>a.price-b.price);
+  else if(catalogFilter.sort === "expensive") list.sort((a,b)=>b.price-a.price);
+  else list.sort((a,b)=>(b.hit?1:0)-(a.hit?1:0));
+
+  const grid = document.getElementById("catalogGrid");
+  const empty = document.getElementById("emptyState");
+  document.getElementById("resultCount").textContent = `Найдено: ${list.length}`;
+
+  if(list.length === 0){
+    grid.innerHTML = "";
+    empty.style.display = "block";
+  }else{
+    empty.style.display = "none";
+    grid.innerHTML = list.map(productCardHtml).join("");
+    bindProductCards(grid);
+  }
+}
+
+document.getElementById("searchInput").addEventListener("input", e=>{
+  catalogFilter.search = e.target.value;
+  renderCatalog();
+});
+document.getElementById("ageFilter").addEventListener("change", e=>{
+  catalogFilter.age = e.target.value;
+  renderCatalog();
+});
+document.getElementById("sortFilter").addEventListener("change", e=>{
+  catalogFilter.sort = e.target.value;
+  renderCatalog();
+});
+
+/* ======================= КАРТОЧКА ТОВАРА (модалка) ======================= */
+function openProductModal(id){
+  const p = findProduct(id);
+  if(!p) return;
+  currentProduct = p;
+  currentSize = p.sizes.length === 1 ? p.sizes[0] : null;
+
+  const sizeHint = typeof p.sizes[0] === "number"
+    ? (p.cat === "shoes" ? "Размеры указаны в размерной сетке обуви." : "Размеры указаны по росту ребёнка (см).")
+    : "";
+
+  document.getElementById("productSheet").innerHTML = `
+    <button class="sheet-close" id="pmClose" aria-label="Закрыть">✕</button>
+    <div class="pm-img" style="background:${p.color}"><span>${p.emoji}</span></div>
+    <div class="product-age">${AGE_LABELS[p.age].label}</div>
+    <h3 class="sheet-header" style="margin-bottom:6px;">${escapeHtml(p.name)}</h3>
+    <div class="pm-price">
+      <span class="price-now">${money(p.price)}</span>
+      ${p.oldPrice ? `<span class="price-old">${money(p.oldPrice)}</span>` : ""}
+    </div>
+    <div style="font-weight:800;font-size:13px;margin-top:10px;">Размер</div>
+    ${sizeHint ? `<div class="size-hint">${sizeHint}</div>` : ""}
+    <div class="size-grid" id="pmSizeGrid">
+      ${p.sizes.map(s=>`<button class="size-chip${currentSize===s?" selected":""}" data-size="${s}">${s}</button>`).join("")}
+    </div>
+    <div class="size-warning" id="pmSizeWarning">Сначала выберите размер.</div>
+    <div class="exchange-note">🔄 Обмен в течение 14 дней, если вещь не носили.</div>
+    <button class="btn btn-primary btn-block" id="pmAddBtn">Добавить в корзину</button>
+  `;
+  document.getElementById("pmClose").addEventListener("click", closeProductModal);
+  document.getElementById("pmSizeGrid").querySelectorAll(".size-chip").forEach(chip=>{
+    chip.addEventListener("click", ()=>{
+      currentSize = isNaN(Number(chip.dataset.size)) ? chip.dataset.size : Number(chip.dataset.size);
+      document.getElementById("pmSizeGrid").querySelectorAll(".size-chip").forEach(c=>c.classList.remove("selected"));
+      chip.classList.add("selected");
+      document.getElementById("pmSizeWarning").classList.remove("show");
+    });
+  });
+  document.getElementById("pmAddBtn").addEventListener("click", ()=>{
+    if(!currentSize){
+      document.getElementById("pmSizeWarning").classList.add("show");
+      return;
+    }
+    addToCart(p.id, currentSize);
+    closeProductModal();
+    showToast(`${p.name} добавлено в корзину`);
+  });
+
+  openOverlay("productOverlay");
+}
+function closeProductModal(){ closeOverlay("productOverlay"); }
+
+/* ======================= КОРЗИНА ======================= */
+function addToCart(productId, size){
+  const existing = cart.find(i=>i.productId===productId && i.size===size);
+  if(existing) existing.qty += 1;
+  else cart.push({ productId, size, qty:1 });
+  saveCart();
+  updateCartHeader();
+}
+function changeQty(index, delta){
+  const item = cart[index];
+  if(!item) return;
+  item.qty += delta;
+  if(item.qty <= 0) cart.splice(index,1);
+  saveCart();
+  updateCartHeader();
+  renderCart();
+}
+function cartItemsTotal(){
+  return cart.reduce((sum,i)=>{
+    const p = findProduct(i.productId);
+    return sum + (p ? p.price * i.qty : 0);
+  }, 0);
+}
+function cartCount(){ return cart.reduce((s,i)=>s+i.qty,0); }
+function promoDiscount(itemsTotal){
+  if(!appliedPromo || !PROMO[appliedPromo]) return 0;
+  return Math.round(itemsTotal * PROMO[appliedPromo]);
+}
+function currentDeliveryCost(itemsTotal){
+  const d = DELIVERY.find(x=>x.id===selectedDelivery) || DELIVERY[0];
+  if(d.id === "pickup") return 0;
+  if(itemsTotal >= FREE_FROM) return 0;
+  return d.price;
+}
+function updateCartHeader(){
+  document.getElementById("cartCount").textContent = cartCount();
+  document.getElementById("cartHeaderSum").textContent = money(cartItemsTotal());
+}
+
+function renderCart(){
+  const itemsTotal = cartItemsTotal();
+  const discount = promoDiscount(itemsTotal);
+  const deliveryCost = currentDeliveryCost(itemsTotal);
+  const grandTotal = Math.max(0, itemsTotal - discount) + deliveryCost;
+  const remaining = Math.max(0, FREE_FROM - itemsTotal);
+  const progressPct = Math.min(100, Math.round((itemsTotal / FREE_FROM) * 100));
+
+  let itemsHtml = "";
+  if(cart.length === 0){
+    itemsHtml = `<div class="empty-state"><div class="emoji">🛒</div><p>Корзина пуста.</p>
+      <button class="btn btn-accent" id="cartGoCatalog">В каталог</button></div>`;
+  }else{
+    itemsHtml = cart.map((item,idx)=>{
+      const p = findProduct(item.productId);
+      if(!p) return "";
+      return `<div class="cart-item">
+        <div class="thumb" style="background:${p.color}">${p.emoji}</div>
+        <div class="cart-item-info">
+          <div class="cart-item-name">${escapeHtml(p.name)}</div>
+          <div class="cart-item-size">Размер: ${p.sizes.length===1 ? p.sizes[0] : item.size}</div>
+          <div class="qty-row">
+            <button class="qty-btn" data-idx="${idx}" data-delta="-1" aria-label="Уменьшить количество">−</button>
+            <span class="qty-val">${item.qty}</span>
+            <button class="qty-btn" data-idx="${idx}" data-delta="1" aria-label="Увеличить количество">+</button>
+          </div>
+        </div>
+        <div class="cart-item-price">${money(p.price * item.qty)}</div>
+      </div>`;
+    }).join("");
+  }
+
+  const freeShipBlock = cart.length ? `<div class="free-ship-box">
+    ${remaining > 0
+      ? `<div>До бесплатной доставки осталось <strong>${money(remaining)}</strong></div>`
+      : `<div>🎉 Бесплатная доставка доступна!</div>`}
+    <div class="progress-bar"><div class="progress-fill" style="width:${progressPct}%"></div></div>
+  </div>` : "";
+
+  const deliveryBlock = cart.length ? `<h4 style="margin-top:18px;">Доставка</h4>
+    <div id="cartDeliveryList">
+      ${DELIVERY.map(d=>{
+        const cost = d.id==="pickup" ? 0 : (itemsTotal >= FREE_FROM ? 0 : d.price);
+        return `<label class="delivery-option${selectedDelivery===d.id?" selected":""}" data-id="${d.id}">
+          <input type="radio" name="deliveryOpt" value="${d.id}" ${selectedDelivery===d.id?"checked":""}>
+          <div class="delivery-info">
+            <div class="delivery-name">${d.name}</div>
+            <div class="delivery-days">${d.days}</div>
+          </div>
+          <div class="delivery-price">${cost===0 ? "Бесплатно" : money(cost)}</div>
+        </label>`;
+      }).join("")}
+    </div>` : "";
+
+  const promoBlock = cart.length ? `<h4 style="margin-top:18px;">Промокод</h4>
+    <div class="promo-row">
+      <input type="text" id="promoInput" placeholder="Введите код" value="${appliedPromo || ""}">
+      <button class="btn btn-outline btn-sm" id="promoApplyBtn">Применить</button>
+    </div>
+    <div class="promo-msg" id="promoMsg"></div>` : "";
+
+  const totalsBlock = cart.length ? `
+    <div style="margin-top:18px;">
+      <div class="totals-row"><span>Товары</span><span>${money(itemsTotal)}</span></div>
+      ${discount > 0 ? `<div class="totals-row"><span>Скидка (${appliedPromo})</span><span>−${money(discount)}</span></div>` : ""}
+      <div class="totals-row"><span>Доставка</span><span>${deliveryCost===0?"Бесплатно":money(deliveryCost)}</span></div>
+      <div class="totals-row grand"><span>Итого</span><span>${money(grandTotal)}</span></div>
+    </div>` : "";
+
+  document.getElementById("cartSheet").innerHTML = `
+    <button class="sheet-close" id="cartClose" aria-label="Закрыть">✕</button>
+    <h3 class="sheet-header">Корзина</h3>
+    <div id="cartItemsList">${itemsHtml}</div>
+    ${freeShipBlock}
+    ${deliveryBlock}
+    ${promoBlock}
+    ${totalsBlock}
+    ${cart.length ? `<div class="cart-footer"><button class="btn btn-primary btn-block" id="cartCheckoutBtn">Оформить заказ</button></div>` : ""}
+  `;
+
+  document.getElementById("cartClose").addEventListener("click", ()=>closeOverlay("cartOverlay"));
+  const goCatalogBtn = document.getElementById("cartGoCatalog");
+  if(goCatalogBtn) goCatalogBtn.addEventListener("click", ()=>{ closeOverlay("cartOverlay"); showView("catalog"); });
+
+  document.querySelectorAll(".qty-btn").forEach(btn=>{
+    btn.addEventListener("click", ()=>changeQty(Number(btn.dataset.idx), Number(btn.dataset.delta)));
+  });
+  document.querySelectorAll(".delivery-option").forEach(label=>{
+    label.addEventListener("click", ()=>{
+      selectedDelivery = label.dataset.id;
+      saveDelivery();
+      renderCart();
+    });
+  });
+  const promoBtn = document.getElementById("promoApplyBtn");
+  if(promoBtn){
+    promoBtn.addEventListener("click", ()=>{
+      const code = document.getElementById("promoInput").value.trim().toUpperCase();
+      const msg = document.getElementById("promoMsg");
+      if(!code){ appliedPromo = null; savePromo(); renderCart(); return; }
+      if(PROMO[code]){
+        appliedPromo = code;
+        savePromo();
+        renderCart();
+      }else{
+        msg.textContent = "Такого промокода нет";
+        msg.className = "promo-msg err";
+      }
+    });
+  }
+  const checkoutBtn = document.getElementById("cartCheckoutBtn");
+  if(checkoutBtn) checkoutBtn.addEventListener("click", openCheckout);
+}
+
+document.getElementById("cartOpenBtn").addEventListener("click", ()=>{
+  renderCart();
+  openOverlay("cartOverlay");
+});
+
+/* ======================= ОФОРМЛЕНИЕ ЗАКАЗА ======================= */
+function openCheckout(){
+  closeOverlay("cartOverlay");
+  renderCheckout();
+  openOverlay("checkoutOverlay");
+}
+
+function renderCheckout(){
+  const itemsTotal = cartItemsTotal();
+  const discount = promoDiscount(itemsTotal);
+  const d = DELIVERY.find(x=>x.id===selectedDelivery) || DELIVERY[0];
+  const deliveryCost = currentDeliveryCost(itemsTotal);
+  const grandTotal = Math.max(0, itemsTotal - discount) + deliveryCost;
+  const needsAddress = d.id !== "pickup";
+
+  document.getElementById("checkoutSheet").innerHTML = `
+    <button class="sheet-close" id="coClose" aria-label="Закрыть">✕</button>
+    <h3 class="sheet-header">Оформление заказа</h3>
+    <div style="margin-bottom:14px;">
+      ${cart.map(item=>{
+        const p = findProduct(item.productId);
+        if(!p) return "";
+        return `<div class="mini-item"><span>${escapeHtml(p.name)}, р. ${p.sizes.length===1?p.sizes[0]:item.size} × ${item.qty}</span><span>${money(p.price*item.qty)}</span></div>`;
+      }).join("")}
+      <div class="mini-item"><span>Доставка: ${d.name}</span><span>${deliveryCost===0?"Бесплатно":money(deliveryCost)}</span></div>
+      ${discount>0 ? `<div class="mini-item"><span>Промокод ${appliedPromo}</span><span>−${money(discount)}</span></div>` : ""}
+      <div class="totals-row grand"><span>Итого</span><span>${money(grandTotal)}</span></div>
+    </div>
+    <form id="checkoutForm" novalidate>
+      <div class="field" id="f-co-name">
+        <label for="coName">Имя</label>
+        <input type="text" id="coName" value="${profile && profile.name ? escapeHtml(profile.name) : ""}">
+      </div>
+      <div class="field" id="f-co-phone">
+        <label for="coPhone">Телефон*</label>
+        <input type="tel" id="coPhone" placeholder="+7 701 123 45 67" value="${profile && profile.phone ? escapeHtml(profile.phone) : ""}">
+        <div class="error-msg">Введите номер полностью (не менее 11 цифр).</div>
+      </div>
+      ${needsAddress ? `<div class="field" id="f-co-address">
+        <label for="coAddress">Адрес* (${d.addr})</label>
+        <input type="text" id="coAddress" placeholder="${d.addr}">
+        <div class="error-msg">Укажите адрес доставки.</div>
+      </div>` : ""}
+      <div class="field">
+        <label>Оплата</label>
+        <select id="coPayment">
+          <option value="kaspi">Kaspi (реквизиты пришлёт менеджер)</option>
+          <option value="cash">Наличными при получении</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-accent btn-block">📲 Отправить заказ в WhatsApp</button>
+    </form>
+  `;
+  document.getElementById("coClose").addEventListener("click", ()=>closeOverlay("checkoutOverlay"));
+  document.getElementById("checkoutForm").addEventListener("submit", e=>{
+    e.preventDefault();
+    submitOrder(needsAddress, d, deliveryCost, itemsTotal, discount, grandTotal);
+  });
+}
+
+function digitsOnly(s){ return (s||"").replace(/\D/g,""); }
+
+function submitOrder(needsAddress, delivery, deliveryCost, itemsTotal, discount, grandTotal){
+  const nameEl = document.getElementById("coName");
+  const phoneEl = document.getElementById("coPhone");
+  const addrEl = needsAddress ? document.getElementById("coAddress") : null;
+  let valid = true;
+
+  clearError("f-co-phone");
+  if(digitsOnly(phoneEl.value).length < 11){ setError("f-co-phone"); valid = false; }
+
+  if(needsAddress){
+    clearError("f-co-address");
+    if(!addrEl.value.trim()){ setError("f-co-address"); valid = false; }
+  }
+  if(!valid) return;
+
+  const orderNumber = "TT-" + String(Math.floor(100000 + Math.random()*900000));
+  let lines = [`Здравствуйте! Хочу оформить заказ:`];
+  cart.forEach((item,idx)=>{
+    const p = findProduct(item.productId);
+    if(!p) return;
+    const size = p.sizes.length===1 ? p.sizes[0] : item.size;
+    lines.push(`${idx+1}. ${p.name}, размер ${size} × ${item.qty} = ${money(p.price*item.qty)}`);
+  });
+  lines.push("");
+  lines.push(`Доставка: ${delivery.name} (${deliveryCost===0?"Бесплатно":money(deliveryCost)})`);
+  if(discount>0) lines.push(`Промокод: ${appliedPromo} (−${money(discount)})`);
+  lines.push(`Итого: ${money(grandTotal)}`);
+  lines.push("");
+  lines.push(`Имя: ${nameEl.value.trim() || "-"}`);
+  lines.push(`Телефон: ${phoneEl.value.trim()}`);
+  if(needsAddress) lines.push(`Адрес: ${addrEl.value.trim()}`);
+  lines.push("");
+  lines.push(`Номер заказа: ${orderNumber}`);
+
+  const text = encodeURIComponent(lines.join("\n"));
+  const waUrl = `https://wa.me/${WA_NUMBER}?text=${text}`;
+  window.open(waUrl, "_blank", "noopener");
+
+  showOrderConfirmation(orderNumber);
+
+  cart = [];
+  appliedPromo = null;
+  saveCart();
+  savePromo();
+  updateCartHeader();
+}
+
+function showOrderConfirmation(orderNumber){
+  document.getElementById("checkoutSheet").innerHTML = `
+    <button class="sheet-close" id="coDoneClose" aria-label="Закрыть">✕</button>
+    <div class="success-box">
+      <div class="emoji">✅</div>
+      <h3>Заказ отправлен!</h3>
+      <p>Номер заказа: <strong>${orderNumber}</strong></p>
+      <p>Если чат WhatsApp не открылся автоматически, напишите нам на номер ${CONTACTS.phone}.</p>
+      <button class="btn btn-primary" id="coDoneHome">На главную</button>
+    </div>
+  `;
+  document.getElementById("coDoneClose").addEventListener("click", ()=>closeOverlay("checkoutOverlay"));
+  document.getElementById("coDoneHome").addEventListener("click", ()=>{
+    closeOverlay("checkoutOverlay");
+    showView("home");
+  });
+}
+
+/* ======================= РЕГИСТРАЦИЯ ======================= */
+function setError(fieldId){ document.getElementById(fieldId).classList.add("has-error"); }
+function clearError(fieldId){ document.getElementById(fieldId).classList.remove("has-error"); }
+
+document.getElementById("registerForm").addEventListener("submit", e=>{
+  e.preventDefault();
+  const name = document.getElementById("regName").value.trim();
+  const phone = document.getElementById("regPhone").value.trim();
+  const email = document.getElementById("regEmail").value.trim();
+  const city = document.getElementById("regCity").value.trim();
+  const childAge = document.getElementById("regAge").value;
+  const agree = document.getElementById("regAgree").checked;
+
+  let valid = true;
+  ["f-reg-name","f-reg-phone","f-reg-email","f-reg-agree"].forEach(clearError);
+
+  if(!name){ setError("f-reg-name"); valid = false; }
+  if(digitsOnly(phone).length < 11){ setError("f-reg-phone"); valid = false; }
+  if(email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){ setError("f-reg-email"); valid = false; }
+  if(!agree){ setError("f-reg-agree"); valid = false; }
+  if(!valid) return;
+
+  profile = { name, phone, email, city, childAge };
+  saveProfile();
+  appliedPromo = "WELCOME10";
+  savePromo();
+  updateCartHeader();
+
+  document.getElementById("registerFormWrap").style.display = "none";
+  const successWrap = document.getElementById("registerSuccessWrap");
+  successWrap.style.display = "block";
+  const showItemsBtn = document.getElementById("regShowItemsBtn");
+  if(childAge && AGE_LABELS[childAge]){
+    showItemsBtn.style.display = "inline-flex";
+    showItemsBtn.textContent = `Показать вещи для ${AGE_LABELS[childAge].label}`;
+    showItemsBtn.onclick = ()=>{
+      catalogFilter.age = childAge;
+      catalogFilter.cat = "all";
+      document.getElementById("registerFormWrap").style.display = "block";
+      successWrap.style.display = "none";
+      document.getElementById("registerForm").reset();
+      showView("catalog");
+    };
+  }else{
+    showItemsBtn.style.display = "none";
+  }
+});
+
+/* ======================= КОНТАКТЫ ======================= */
+function renderContacts(){
+  const chips = [
+    { emoji:"💬", label:"WhatsApp", href:`https://wa.me/${CONTACTS.whatsapp}` },
+    { emoji:"📞", label:CONTACTS.phone, href:`tel:${CONTACTS.phone.replace(/\s/g,"")}` },
+    { emoji:"📸", label:"Instagram", href:`https://instagram.com/${CONTACTS.instagram.replace("@","")}` },
+    { emoji:"✉️", label:"Email", href:`mailto:${CONTACTS.email}` }
+  ];
+  document.getElementById("contactGrid").innerHTML = chips.map(c=>
+    `<a class="contact-chip" href="${c.href}" target="_blank" rel="noopener"><div class="emoji">${c.emoji}</div><div class="label">${c.label}</div></a>`
+  ).join("");
+  document.getElementById("pickupAddress").textContent = "Адрес: " + CONTACTS.pickupAddress;
+  document.getElementById("pickupHours").textContent = "Часы работы: " + CONTACTS.pickupHours;
+
+  document.getElementById("faqList").innerHTML = FAQ.map((f,i)=>
+    `<div class="faq-item" data-idx="${i}">
+      <button class="faq-q">${f.q}<span class="chev">▾</span></button>
+      <div class="faq-a">${f.a}</div>
+    </div>`
+  ).join("");
+  document.querySelectorAll(".faq-item .faq-q").forEach(btn=>{
+    btn.addEventListener("click", ()=>{
+      btn.closest(".faq-item").classList.toggle("open");
+    });
+  });
+}
+
+document.getElementById("contactForm").addEventListener("submit", e=>{
+  e.preventDefault();
+  const name = document.getElementById("cName").value.trim();
+  const message = document.getElementById("cMessage").value.trim();
+  clearError("f-c-message");
+  if(!message){ setError("f-c-message"); return; }
+  const text = encodeURIComponent(`Здравствуйте! ${name ? "Меня зовут " + name + ". " : ""}${message}`);
+  window.open(`https://wa.me/${WA_NUMBER}?text=${text}`, "_blank", "noopener");
+  document.getElementById("contactForm").reset();
+  showToast("Сообщение отправлено в WhatsApp");
+});
+
+/* ======================= ОВЕРЛЕИ: открытие/закрытие ======================= */
+let lastFocused = null;
+function openOverlay(id){
+  lastFocused = document.activeElement;
+  document.getElementById(id).classList.add("active");
+  document.body.style.overflow = "hidden";
+}
+function closeOverlay(id){
+  document.getElementById(id).classList.remove("active");
+  const anyOpen = document.querySelector(".overlay.active");
+  if(!anyOpen) document.body.style.overflow = "";
+  if(lastFocused && lastFocused.focus) lastFocused.focus();
+}
+document.querySelectorAll(".overlay").forEach(ov=>{
+  ov.addEventListener("click", e=>{
+    if(e.target === ov) closeOverlay(ov.id);
+  });
+});
+document.addEventListener("keydown", e=>{
+  if(e.key === "Escape"){
+    document.querySelectorAll(".overlay.active").forEach(ov=>closeOverlay(ov.id));
+  }
+});
+
+/* ======================= TOAST ======================= */
+let toastTimer = null;
+function showToast(msg){
+  const t = document.getElementById("toast");
+  t.textContent = msg;
+  t.classList.add("show");
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(()=>t.classList.remove("show"), 2200);
+}
+
+/* ======================= ИНИЦИАЛИЗАЦИЯ ======================= */
+renderHome();
+renderContacts();
+updateCartHeader();
+
+})();
+</script>
+</body>
+</html>
