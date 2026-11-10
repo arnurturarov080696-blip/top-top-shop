@@ -154,7 +154,7 @@ section{padding:36px 0;}
 
 /* ---------- Quick categories ---------- */
 .cat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
-@media (min-width:700px){.cat-grid{grid-template-columns:repeat(6,1fr);}}
+@media (min-width:700px){.cat-grid{grid-template-columns:repeat(4,1fr);}}
 .cat-card{
   border:none;background:var(--card);border-radius:var(--radius-md);padding:16px 8px;text-align:center;cursor:pointer;
   box-shadow:var(--shadow);min-height:44px;
@@ -176,9 +176,11 @@ section{padding:36px 0;}
   aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;font-size:48px;position:relative;
 }
 .product-badge{
-  position:absolute;top:8px;left:8px;background:var(--pink);color:var(--ink);font-weight:800;font-size:11px;
+  position:absolute;z-index:1;top:8px;left:8px;background:var(--pink);color:var(--ink);font-weight:800;font-size:11px;
   padding:3px 9px;border-radius:999px;
 }
+.product-img,.pm-img,.cart-item .thumb{overflow:hidden;position:relative;}
+.photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
 .product-body{padding:10px 12px 14px;}
 .product-age{font-size:11px;color:var(--ink-soft);font-weight:700;text-transform:uppercase;letter-spacing:.03em;}
 .product-name{font-weight:800;font-size:14px;margin:2px 0 6px;color:var(--ink);}
@@ -614,6 +616,7 @@ const CATS = [
   { id:"all", label:"Всё", emoji:"✨" },
   { id:"clothes", label:"Одежда", emoji:"👕" },
   { id:"sport", label:"Спортивная одежда", emoji:"🏃" },
+  { id:"home", label:"Домашняя одежда", emoji:"🏠" },
   { id:"dress", label:"Платья", emoji:"👗" },
   { id:"outer", label:"Верхняя", emoji:"🧥" },
   { id:"shoes", label:"Обувь", emoji:"👟" },
@@ -640,7 +643,10 @@ const P = [
   { id:16, name:"Рюкзак школьный ортопедический", cat:"acc", age:"8-12", price:12900, oldPrice:null, sizes:["Один размер"], badge:"Новинка", hit:false, emoji:"🎒", color:"var(--sky)" },
   { id:17, name:"Спортивный костюм «Чемпион»", cat:"sport", age:"2-5", price:8900, oldPrice:null, sizes:[92,98,104,110], badge:"Новинка", hit:false, emoji:"🤸", color:"var(--salad)" },
   { id:18, name:"Футболка и шорты для спорта", cat:"sport", age:"5-8", price:5900, oldPrice:7200, badge:"−18%", sizes:[116,122,128,134], hit:false, emoji:"🎽", color:"var(--sky)" },
-  { id:19, name:"Спортивный костюм подростковый", cat:"sport", age:"8-12", price:11900, oldPrice:null, sizes:[140,146,152,158], badge:"Хит", hit:true, emoji:"🏃", color:"var(--salad)" }
+  { id:19, name:"Спортивный костюм подростковый", cat:"sport", age:"8-12", price:11900, oldPrice:null, sizes:[140,146,152,158], badge:"Хит", hit:true, emoji:"🏃", color:"var(--salad)" },
+  { id:20, name:"Пижама хлопковая «Звёздочки»", cat:"home", age:"2-5", price:5500, oldPrice:null, sizes:[92,98,104,110], badge:"Новинка", hit:false, emoji:"🌙", img:"images/pizhama-zvezdochki.jpg", color:"var(--lilac)" },
+  { id:21, name:"Домашний костюм флисовый", cat:"home", age:"5-8", price:7900, oldPrice:9500, badge:"−17%", sizes:[116,122,128,134], hit:false, emoji:"🏠", color:"var(--peach)" },
+  { id:22, name:"Халат махровый с капюшоном", cat:"home", age:"8-12", price:8900, oldPrice:null, sizes:[140,146,152,158], badge:null, hit:false, emoji:"🛁", color:"var(--sky)" }
 ];
 
 const CONTACTS = {
@@ -755,11 +761,14 @@ function renderHome(){
   bindProductCards(document.getElementById("hitsGrid"));
 }
 
+function pic(p){
+  return p.img ? `<img class="photo" src="${p.img}" alt="${p.name}" loading="lazy">` : `<span>${p.emoji}</span>`;
+}
 function productCardHtml(p){
   return `<button class="product-card" data-id="${p.id}">
     <div class="product-img" style="background:${p.color}">
       ${p.badge ? `<span class="product-badge">${p.badge}</span>` : ""}
-      <span>${p.emoji}</span>
+      ${pic(p)}
     </div>
     <div class="product-body">
       <div class="product-age">${AGE_LABELS[p.age].label}</div>
@@ -848,7 +857,7 @@ function openProductModal(id){
 
   document.getElementById("productSheet").innerHTML = `
     <button class="sheet-close" id="pmClose" aria-label="Закрыть">✕</button>
-    <div class="pm-img" style="background:${p.color}"><span>${p.emoji}</span></div>
+    <div class="pm-img" style="background:${p.color}">${pic(p)}</div>
     <div class="product-age">${AGE_LABELS[p.age].label}</div>
     <h3 class="sheet-header" style="margin-bottom:6px;">${escapeHtml(p.name)}</h3>
     <div class="pm-price">
@@ -943,7 +952,7 @@ function renderCart(){
       const p = findProduct(item.productId);
       if(!p) return "";
       return `<div class="cart-item">
-        <div class="thumb" style="background:${p.color}">${p.emoji}</div>
+        <div class="thumb" style="background:${p.color}">${pic(p)}</div>
         <div class="cart-item-info">
           <div class="cart-item-name">${escapeHtml(p.name)}</div>
           <div class="cart-item-size">Размер: ${p.sizes.length===1 ? p.sizes[0] : item.size}</div>
